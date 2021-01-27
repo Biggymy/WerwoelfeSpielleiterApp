@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Werwoelfe.PlayerPage"
+             Title="Spieler">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Neu" Clicked="NewPlayer_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout BackgroundColor="Black">
+
+        <SearchBar Placeholder="Suchen..." x:Name="PlayerSearchBar" BackgroundColor="Black" TextColor="White" PlaceholderColor="Gray" CancelButtonColor="White"/>
+
+        <ListView x:Name="PlayerList" BackgroundColor="Black" HorizontalOptions="StartAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Padding="10">
+                            <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" TextColor="White"/>
+                            <Switch IsToggled="{Binding IsSelected}" Toggled="Switch_Toggled" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Ändern" Clicked="ChangePlayer_Clicked" CommandParameter="{Binding .}"/>
+                            <MenuItem Text="Löschen" Clicked="DeletePlayer_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

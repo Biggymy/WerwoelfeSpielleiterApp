@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Werwoelfe.PlayerDetailPage"
+             xmlns:local="clr-namespace:Werwoelfe"
+             Title="{Binding Name}"
+             >
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Speichern" Clicked="Save_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <TableView Intent="Data" BackgroundColor="Black">
+        <TableRoot>
+            <TableSection TextColor="White">
+                <EntryCell Label="Name" 
+                           x:Name="NameCell"
+                           Text="{Binding Name}" 
+                           Placeholder="Name eingeben" 
+                           LabelColor="White"/>
+                <SwitchCell Text="Favorit" On="{Binding IsFavorite}"/>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>
